@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        table {
+
+            border: 5px solid white;
+            border-collapse: collapse;
+            margin: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td {
+
+            border: 5px solid white;
+            padding: 5px;
+        }
+
+        body {
+
+            text-align: center;
+            background: black;
+            color: white;
+        }
+
+        #show {
+
+            width: 230px;
+            height: 30px;
+            background-color: white;
+            margin: 20px;
+            margin-left: auto;
+            margin-right: auto;
+
+
+        }
+
+        #answer {
+
+            color: black;
+            text-align: right;
+            padding: 5px;
+        }
+
+        button {
+
+            padding: 5px;
+            margin: 5px;
+        }
+
+        input {
+
+            padding: 5px;
+        }
+
+        textarea {
+
+            margin 5px;
+            padding: 5px;
+        }
+
+        #matrix {
+            display: none;
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        div>table,
+        h2,
+        label {
+
+            display: inline-block;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculator</h1>
+
+
+    <div id="show">
+        <p id="answer"></p>
+    </div>
+    <table id="calc">
+
+        <tr>
+            <td><button id="inverse" onclick="calc('inv')">(+/-)</button></td>
+            <td><button id="multiply" onclick="calc('*')">*</button></td>
+            <td><button id="divide" onclick="calc('/')">/</button></td>
+            <td><button id="add" onclick="calc('+')">+</button></td>
+        </tr>
+
+        <tr>
+            <td><button id="7" onclick="calc(7)">7</button></td>
+            <td><button id="8" onclick="calc(8)">8</button></td>
+            <td><button id="9" onclick="calc(9)">9</button></td>
+            <td><button id="minus" onclick="calc('-')">-</button></td>
+        </tr>
+
+        <tr>
+            <td><button id="4" onclick="calc(4)">4</button></td>
+            <td><button id="5" onclick="calc(5)">5</button></td>
+            <td><button id="6" onclick="calc(6)">6</button></td>
+            <td><button id="clear" onclick="calc('CE')">CE</button></td>
+        </tr>
+
+        <tr>
+            <td><button id="1" onclick="calc(1)">1</button></td>
+            <td><button id="2" onclick="calc(2)">2</button></td>
+            <td><button id="3" onclick="calc(3)">3</button></td>
+            <td><button id="0" onclick="calc(0)">0</button></td>
+        </tr>
+        <tr>
+            <td colspan="3"><button id="equate" onclick="calc('equal')">=</button></td>
+            <td><button id="square" onclick="calc('square')">sqrt</button></td>
+        </tr>
+
+
+    </table>
+
+    <script>
+        function calc(input) {
+            var ans = document.getElementById("answer");
+
+            if (input == "CE") {
+
+                var text = document.createTextNode("");
+                document.getElementById("answer").innerHTML = "";
+
+            } else if (input == "square") {
+
+
+                var num = parseInt(document.getElementById("answer").innerHTML);
+                document.getElementById("answer").innerHTML = "";
+                num = Math.sqrt(num);
+                num = num.toString();
+                var text = document.createTextNode(num.toString());
+
+            } else if (input == "inv") {
+
+                var num = parseInt(document.getElementById("answer").innerHTML);
+                document.getElementById("answer").innerHTML = "";
+                num = num * (-1)
+                num = num.toString();
+                var text = document.createTextNode(num.toString());
+
+            } else if (input != "equal") {
+
+                var text = document.createTextNode(input);
+
+            } else {
+
+                var num = document.getElementById("answer").innerHTML;
+                document.getElementById("answer").innerHTML = "";
+                var text = document.createTextNode(eval(num));
+            }
+
+            ans.appendChild(text);
+
+        }
+    </script>
+
+
+
+</body></html>
